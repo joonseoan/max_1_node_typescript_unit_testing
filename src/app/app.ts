@@ -1,6 +1,6 @@
 import { Server } from "./server/server";
 
-class Launcher {
+export class Launcher {
   server: Server;
 
   constructor () {
@@ -8,7 +8,7 @@ class Launcher {
   }
 
   public launchApp() {
-    this.server.createServer();
+    this.server.startServer();
   }
 }
 
