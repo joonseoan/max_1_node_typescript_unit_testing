@@ -1,7 +1,6 @@
-const { mocked } = require('ts-jest/utils');
-
-const { Launcher } = require('../app/app');
-const { Server } = require('../app/server/server');
+import { mocked } from 'ts-jest/utils';
+import { Launcher } from '../app/app';
+import { Server } from '../app/server/server';
 
 jest.mock('../app/server/server.ts', () => {
   return {
@@ -20,8 +19,14 @@ jest.mock('../app/server/server.ts');
 describe('launch test suit', () => {
   const mockedServer = mocked(Server, true);
 
-  it('Launcher class', () => {
+  it('tests Launcher class', () => {
     new Launcher();
     expect(mockedServer).toBeCalled();
+  });
+
+  it('tests launchApp method', () => {
+    Launcher.prototype.launchApp = jest.fn();
+    new Launcher().launchApp();
+    expect(Launcher.prototype.launchApp).toBeCalled();
   });
 });

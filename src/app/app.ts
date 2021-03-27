@@ -1,5 +1,4 @@
 import { Server } from "./server/server";
-
 export class Launcher {
   server: Server;
 

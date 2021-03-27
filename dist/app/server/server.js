@@ -12,6 +12,7 @@ class Server {
             this.messageInputHandler.setRequest = req;
             this.messageInputHandler.setResponse = res;
             this.messageInputHandler.handleRequest();
+            res.end();
         }).listen(5000);
         console.log('server started');
     }
