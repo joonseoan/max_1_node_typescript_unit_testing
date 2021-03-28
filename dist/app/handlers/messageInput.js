@@ -15,6 +15,7 @@ class MessageInputHandler extends main_1.Main {
     ;
     handleRequest() {
         const url = this.req.url;
+        console.log('url ----> ', url);
         switch (url) {
             case '/':
                 this.handleGET();
@@ -63,7 +64,8 @@ class MessageInputHandler extends main_1.Main {
             });
         });
         this.req.on('error', (err) => {
-            console.log(err);
+            // console.log(err);
+            throw Error;
         });
     }
     handleDefault() {

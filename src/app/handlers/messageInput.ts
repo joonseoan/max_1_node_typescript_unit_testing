@@ -11,6 +11,7 @@ export class MessageInputHandler extends Main {
 
   handleRequest () {
     const url = this.req.url;
+    console.log('url ----> ', url)
     switch (url) {
       case '/':
         this.handleGET();
@@ -51,6 +52,7 @@ export class MessageInputHandler extends Main {
     });
 
     this.req.on('end', () => {
+      
       const parsedBody = Buffer.concat(body).toString();
       const message = parsedBody.split('=')[1];
       // use async function for write.
@@ -63,7 +65,8 @@ export class MessageInputHandler extends Main {
     });
 
     this.req.on('error', (err: Error) => {
-      console.log(err);
+      // console.log(err);
+      throw Error;
     });
   }
 
